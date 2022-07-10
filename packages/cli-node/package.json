@@ -1,0 +1,16 @@
+{
+  "name": "@config-mode/cli",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "ts-node src/index.ts"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "@config-mode/core": "workspace:^1.0.0",
+    "commander": "^9.3.0"
+  }
+}
