@@ -17,6 +17,8 @@
             "@types/node"
         ],
         "moduleResolution": "node",
+        "sourceMap": true,
+        "declarationMap": true
     },
     "include": ["src/**/*.ts"],
 }

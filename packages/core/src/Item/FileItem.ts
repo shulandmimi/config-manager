@@ -4,7 +4,7 @@ import FileResource from '../../dist/Resource/FileResource';
 export default class FileItem extends Item<string> {
     name: string;
     resource?: FileResource;
-    private options = {
+    options = {
         filename: '',
     };
 

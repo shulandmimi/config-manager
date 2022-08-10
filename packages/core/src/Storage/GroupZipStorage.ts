@@ -68,8 +68,8 @@ export default class GroupZipStorage<T extends GroupZipStorageFile = GroupZipSto
     }
 
     async restore() {
-        this.waitForZipLoad.register(
-            JSZip.loadAsync(fs.promises.readFile(this.options.filename))
+        await this.waitForZipLoad.register(
+            JSZip.loadAsync(fs.promises.readFile(this.options.filename + '.zip'))
                 .then(res => {
                     this.zip = res;
                 })

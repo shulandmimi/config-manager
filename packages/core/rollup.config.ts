@@ -15,13 +15,10 @@ function createConfig(name: ModuleFormat) {
         output: {
             dir: './dist/',
             format: name,
+            sourcemap: 'inline',
         },
         external: ['os', 'fs', 'path', 'console'],
-        plugins: [
-            TypescriptPlugin(),
-            commonjs(),
-            resolver(),
-        ],
+        plugins: [TypescriptPlugin(), commonjs(), resolver()],
         treeshake: false,
     });
 }

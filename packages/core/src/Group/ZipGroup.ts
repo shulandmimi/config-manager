@@ -1,23 +1,24 @@
 import Group from './index';
-import GroupZipStorage from 'src/Storage/GroupZipStorage';
 import FileItem from '../Item/FileItem';
+import { Storage } from '../Storage/index';
 
-export default class ZipGroup extends Group<FileItem> {
-    storage!: GroupZipStorage;
+export default class ZipGroup<T extends FileItem = FileItem> extends Group<T> {
+    storage!: Storage<{ [key: string]: unknown }>;
 
-    async add(item: FileItem) {
+    async add(item: T) {
         this.items.push(item);
         const data = await item.resource?.fetch();
+        console.log(data);
         if (!data) return;
-        this.storage.set(item.name, data);
+        await this.storage.set(item.name, data);
     }
 
-    async del(item: FileItem) {
+    async del(item: T) {
         this.items = this.items.filter(i => item.name !== i.name);
-        this.storage.remove(item.name);
+        await this.storage.remove(item.name);
     }
 
-    async find(item: FileItem) {
+    async find(item: T) {
         return this.items.find(i => i.name === item.name);
     }
 
